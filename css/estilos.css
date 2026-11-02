@@ -1,0 +1,169 @@
+/* ═══ CAZAMITOS · estilos ═══ */
+
+:root{
+  --morado:#1B0442; --violeta:#8B5CF6; --amarillo:#FDE047;
+  --ok:#22C55E; --no:#FB7185; --borde:rgba(255,255,255,.14);
+  --tenue:#C9BBE8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Outfit,system-ui,sans-serif; background:#120130; color:#fff;
+  min-height:100vh; overflow-x:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 12% -8%,#4C1D95,transparent 60%),
+    radial-gradient(760px 520px at 96% 108%,#7E22CE,transparent 60%);
+}
+.lienzo{position:relative; z-index:1; max-width:660px; margin:0 auto; padding:26px 16px 44px}
+
+/* ─── Encabezado ─── */
+.marca{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:22px}
+.marca h1{font-size:30px; font-weight:900; letter-spacing:-.03em; line-height:1}
+.marca h1 em{font-style:normal; color:var(--amarillo)}
+.marca .sub{font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:#9D8BC4; margin-top:3px}
+.sonido{
+  background:rgba(255,255,255,.08); border:1px solid var(--borde); color:#fff;
+  width:42px; height:42px; border-radius:50%; font-size:18px; cursor:pointer; flex:none;
+}
+.sonido:hover{background:rgba(255,255,255,.16)}
+
+/* ─── Tarjeta base ─── */
+.tarjeta{
+  background:rgba(255,255,255,.055); border:1px solid var(--borde);
+  border-radius:26px; padding:28px 22px; backdrop-filter:blur(10px);
+}
+
+/* ─── Pantalla de inicio ─── */
+.inicio{text-align:center}
+.titulazo{
+  font-size:clamp(50px,15vw,86px); font-weight:900; line-height:.9; letter-spacing:-.04em;
+  background:linear-gradient(100deg,#fff 20%,var(--amarillo) 55%,var(--violeta) 95%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:latido 3.4s ease-in-out infinite;
+}
+@keyframes latido{50%{transform:scale(1.035)}}
+.bajada{color:var(--tenue); font-size:17px; line-height:1.55; margin:16px auto 26px; max-width:30em}
+.reglas{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:26px}
+.regla{
+  background:rgba(255,255,255,.06); border:1px solid var(--borde); border-radius:14px;
+  padding:14px 16px; min-width:124px;
+}
+.regla b{display:block; font-size:24px; color:var(--amarillo); line-height:1.1}
+.regla span{font-size:12px; color:#A897CF}
+.record{margin-top:18px; font-size:14.5px; color:#A897CF}
+.record b{color:var(--amarillo)}
+
+.boton{
+  font:inherit; font-size:19px; font-weight:800; border:0; cursor:pointer;
+  background:var(--amarillo); color:var(--morado);
+  padding:17px 40px; border-radius:999px; transition:transform .14s, box-shadow .14s;
+  box-shadow:0 10px 30px rgba(253,224,71,.26);
+}
+.boton:hover{transform:translateY(-2px) scale(1.02); box-shadow:0 14px 36px rgba(253,224,71,.36)}
+.boton:active{transform:translateY(0) scale(.99)}
+.boton.ancho{width:100%; margin-top:18px}
+.boton.fantasma{background:none; color:#fff; border:2px solid var(--borde); box-shadow:none}
+.boton.fantasma:hover{background:rgba(255,255,255,.08)}
+
+/* ─── Marcador ─── */
+.marcador{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px}
+.dato{font-size:12.5px; color:#A897CF}
+.dato b{display:block; font-size:21px; color:#fff; line-height:1.15}
+.racha{
+  display:flex; align-items:center; gap:6px; background:rgba(253,224,71,.12);
+  border:1px solid rgba(253,224,71,.35); color:var(--amarillo);
+  padding:7px 13px; border-radius:999px; font-size:14px; font-weight:700;
+  opacity:0; transform:scale(.85); transition:.25s;
+}
+.racha.viva{opacity:1; transform:scale(1)}
+.racha.sube{animation:pop .4s}
+@keyframes pop{45%{transform:scale(1.22)}}
+
+/* ─── Tiempo ─── */
+.tiempo{height:9px; background:rgba(255,255,255,.12); border-radius:999px; overflow:hidden; margin-bottom:6px}
+.tiempo i{
+  display:block; height:100%; width:100%;
+  background:linear-gradient(90deg,var(--ok),var(--amarillo));
+  transition:width .1s linear;
+}
+.tiempo.poco i{background:linear-gradient(90deg,var(--amarillo),var(--no)); animation:pulso .5s infinite}
+@keyframes pulso{50%{opacity:.55}}
+.avance{font-size:12.5px; color:#A897CF; margin-bottom:20px; display:flex; justify-content:space-between}
+
+/* ─── Pregunta ─── */
+.tema{
+  display:inline-block; background:rgba(139,92,246,.2); border:1px solid rgba(139,92,246,.45);
+  color:#D5C6FB; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:5px 12px; border-radius:999px; margin-bottom:14px;
+}
+.enunciado{font-size:23px; font-weight:600; line-height:1.3; margin-bottom:22px}
+
+.alt{
+  width:100%; text-align:left; font:inherit; font-size:16px; line-height:1.4; color:#fff;
+  background:rgba(255,255,255,.06); border:2px solid var(--borde); border-radius:16px;
+  padding:15px 17px; margin-bottom:11px; cursor:pointer; display:flex; gap:13px; align-items:flex-start;
+  transition:transform .14s, border-color .14s, background .14s;
+}
+.alt .letra{
+  flex:none; width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.14);
+  font-size:13px; font-weight:800; display:grid; place-items:center;
+}
+.alt:hover:not(:disabled){border-color:var(--violeta); transform:translateX(4px)}
+.alt:disabled{cursor:default; opacity:.5}
+.alt.buena{background:rgba(34,197,94,.18); border-color:var(--ok); opacity:1; animation:pop .45s}
+.alt.buena .letra{background:var(--ok); color:#06240F}
+.alt.mala{background:rgba(251,113,133,.16); border-color:var(--no); opacity:1; animation:tiembla .4s}
+.alt.mala .letra{background:var(--no); color:#3B0A14}
+@keyframes tiembla{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+/* ─── Explicación ─── */
+.explica{
+  margin-top:18px; background:rgba(139,92,246,.16); border-left:4px solid var(--violeta);
+  border-radius:14px; padding:17px 18px; font-size:15.5px; line-height:1.6; color:#E6DEFA;
+  animation:entra .34s;
+}
+@keyframes entra{from{opacity:0; transform:translateY(-8px)}}
+.explica b{display:block; font-size:17px; color:#fff; margin-bottom:5px}
+.puntos{
+  float:right; background:var(--amarillo); color:var(--morado); font-weight:800;
+  font-size:14px; padding:4px 12px; border-radius:999px; margin-left:12px;
+}
+
+/* ─── Resultado ─── */
+.final{text-align:center}
+.cifra{
+  font-size:84px; font-weight:900; line-height:1;
+  background:linear-gradient(100deg,var(--amarillo),var(--violeta));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.rango{font-size:27px; font-weight:800; margin:12px 0 6px}
+.final>p{color:var(--tenue); font-size:16px; line-height:1.55}
+.resumen{display:flex; gap:10px; justify-content:center; margin:24px 0 10px; flex-wrap:wrap}
+.nuevo{
+  display:inline-block; background:rgba(253,224,71,.14); border:1px solid rgba(253,224,71,.4);
+  color:var(--amarillo); font-size:13.5px; font-weight:700; padding:7px 15px;
+  border-radius:999px; margin-top:14px;
+}
+.repaso{text-align:left; margin-top:28px}
+.repaso h3{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#A897CF; margin-bottom:12px}
+.fallo{background:rgba(251,113,133,.09); border:1px solid rgba(251,113,133,.28); border-radius:14px; padding:15px 16px; margin-bottom:10px}
+.fallo b{display:block; font-size:16px; margin-bottom:6px}
+.fallo p{font-size:14.5px; color:var(--tenue); line-height:1.55}
+.fallo .correcta{color:var(--ok); font-weight:600}
+
+/* ─── Equipo y pie ─── */
+.equipo{
+  background:rgba(255,255,255,.055); border:1px solid var(--borde); border-radius:22px;
+  padding:26px 22px; margin-top:26px; text-align:center;
+}
+.equipo h3{font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:var(--amarillo); font-weight:800; margin-bottom:10px}
+.equipo p{font-size:17px; color:#D8CCF0; line-height:1.65}
+
+footer{margin-top:28px; text-align:center}
+footer img{width:116px; margin-bottom:16px; opacity:.95}
+footer p{font-size:12.5px; color:#9D8BC4; line-height:1.75}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
